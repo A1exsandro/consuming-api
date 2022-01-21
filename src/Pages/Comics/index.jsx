@@ -17,77 +17,74 @@ import {
   Menu
 } from './styles';
 
-function Characters (){
+function Comics (){
 
-  const [characters, setCharacters] = useState([]);
+  const [comics, setComics] = useState([]);
 
   useEffect(()=>{
     api
-      .get('/characters')
+      .get('/comics')
       .then(response => {
         console.log(response.data.data.results);
-        setCharacters(response.data.data.results);
-        console.log('console characters',characters)
+        setComics(response.data.data.results);
+        console.log('segundo comics',comics)
       })
       .catch(err => console.log(err));
   },[]);
 
   const handleMore = useCallback(async() => {
     try {
-      const offset = characters.length;
-      const response = await api.get('/characters', {
+      const offset = comics.length;
+      const response = await api.get('/comics', {
         params: {
           offset,
         },
       });
 
-      setCharacters([...characters, ...response.data.data.results]);
+      setComics([...comics, ...response.data.data.results]);
 
     } catch (err) {
       console.log(err)
     }
-  }, [characters])
+  }, [comics])
 
   return (
     <Container>
-
       <Header>
         <Main>
-          <img src={Marvel} alt="Marvel"  />
+          <img src={Marvel} alt="Marvel" />
           <input></input>
           <Title>Alexsandro</Title> 
         </Main>
         <Menu>
-          <Link className='link' to="/">CHARACTERS</Link>
+        <Link className='link' to="/">CHARACTERS</Link>
           <Link className='link' to="/comics">COMICS</Link>
           <Link className='link' to="#">MORE</Link>
         </Menu>
       </Header>
-
+       <Title>COMICS</Title>
       <CardList>
-        {characters.map(character => {
+        {comics.map(comic => {
           return (
-            <Card key={character.id} >
+            <Card key={comic.id} >
               <div id="img">
-                <img id='img' src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
-                  alt={`Foto do ${character.name}`}
+                <img id='img' src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} 
+                  alt={`Foto do ${comic.name}`}
                 />
               </div>
-              <h2>{character.name}</h2>
-              <p>{character.description}</p>
+              <h2>{comic.name}</h2>
+              <p>{comic.description}</p>
             </Card>
           );
         })}
       </CardList>
-
       <ButtonMore onClick={handleMore} >
         <FiChevronDown size={20} />
           Mais
         <FiChevronDown size={20} />
       </ButtonMore>
-
     </Container>
   );
 }
 
-export default Characters;
+export default Comics;
