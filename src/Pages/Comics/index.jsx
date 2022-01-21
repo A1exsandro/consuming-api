@@ -50,6 +50,7 @@ function Comics (){
 
   return (
     <Container>
+
       <Header>
         <Main>
           <img src={Marvel} alt="Marvel" />
@@ -62,7 +63,9 @@ function Comics (){
           <Link className='link' to="#">MORE</Link>
         </Menu>
       </Header>
+
        <Title>COMICS</Title>
+
       <CardList>
         {comics.map(comic => {
           return (
@@ -72,17 +75,19 @@ function Comics (){
                   alt={`Foto do ${comic.name}`}
                 />
               </div>
-              <h2>{comic.name}</h2>
-              <p>{comic.description}</p>
+              <ButtonMore className='botton-comics' >CHARACTERS</ButtonMore>
+              <ButtonMore className='botton-comics' >DESCRIPTION</ButtonMore>
             </Card>
           );
         })}
       </CardList>
+
       <ButtonMore onClick={handleMore} >
         <FiChevronDown size={20} />
           Mais
         <FiChevronDown size={20} />
       </ButtonMore>
+
     </Container>
   );
 }

@@ -74,7 +74,9 @@ function Characters (){
                 />
               </div>
               <h2>{character.name}</h2>
-              <p>{character.description}</p>
+              <ButtonMore>COMICS</ButtonMore>
+              <ButtonMore>DESCRIPTION</ButtonMore>
+              {/* <p>{character.description}</p> */}
             </Card>
           );
         })}

@@ -20,12 +20,8 @@ function App() {
         <Route path="/comics" element={<Comics />} />
       </Routes>
     </BrowserRouter>
-    // <>
-    //   <Characters />
-    //   <Comics />
-    //   <GlobalStyle />
-    // </>
-  ) 
+    
+  ); 
 }
 
 export default App;

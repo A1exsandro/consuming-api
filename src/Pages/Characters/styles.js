@@ -102,7 +102,7 @@ export const ButtonMore = styled.div`
     box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.3);
     margin: 20px auto;
     padding: 0 50px;
-    border-radius: 5px;
+    border-radius: 0;
     transition: all 0.3ss;
 
     &:hover {
